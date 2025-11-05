@@ -2,16 +2,17 @@ services:
   - type: web
     name: appointments-api
     env: node
-    buildCommand: yarn install --frozen-lockfile
-    startCommand: yarn start
     plan: free
+    buildCommand: npm install
+    startCommand: npm start
     envVars:
       - key: NODE_ENV
         value: production
-      - key: NPM_CONFIG_PRODUCTION
-        value: false
-    healthCheckPath: /
-    buildFilter:
-      paths:
-        - package.json
-        - yarn.lock
+      - key: PORT
+        value: 10000
+      - key: MONGO_URI
+        sync: false
+    key: JWT_SECRET
+    generateValue: true
+    key: GATEWAY_API_URL
+sync: false
