@@ -8,14 +8,16 @@
     "dev": "nodemon server.js",
     "test": "jest",
     "lint": "echo 'Linting skipped'",
-    "build": "echo 'Build completed - Node.js app ready for deployment'"
+    "build": "npm rebuild && echo 'Build completed - Node.js app ready for deployment'",
+    "prebuild": "npm cache clean --force",
+    "postinstall": "npm rebuild"
   },
   "keywords": ["appointments", "api", "carwash", "express", "mongodb"],
   "author": "",
   "license": "ISC",
   "dependencies": {
     "express": "^4.18.2",
-    "mongoose": "^8.0.0",
+    "mongoose": "^7.6.3",
     "dotenv": "^16.3.1",
     "cors": "^2.8.5",
     "helmet": "^7.1.0",

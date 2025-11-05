@@ -1,11 +1,17 @@
 services:
   - type: web
-    name: users-api
+    name: appointments-api
     env: node
-    buildCommand: npm install
-    startCommand: npm start
+    buildCommand: yarn install --frozen-lockfile
+    startCommand: yarn start
     plan: free
     envVars:
       - key: NODE_ENV
         value: production
+      - key: NPM_CONFIG_PRODUCTION
+        value: false
     healthCheckPath: /
+    buildFilter:
+      paths:
+        - package.json
+        - yarn.lock
