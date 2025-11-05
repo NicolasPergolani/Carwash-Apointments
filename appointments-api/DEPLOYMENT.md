@@ -15,7 +15,7 @@ NODE_ENV=production
 GATEWAY_API_URL=https://your-gateway-url.com
 
 # MongoDB Atlas Configuration  
-MONGO_URI=mongodb+srv://<username>:<password>@<cluster>.mongodb.net/carwash_appointments?retryWrites=true&w=majority
+MONGO_URI=mongodb+srv://<username>:<password>@<cluster>.mongodb.net/
 
 # JWT Secret (if needed)
 JWT_SECRET=your_super_secret_jwt_key_here
