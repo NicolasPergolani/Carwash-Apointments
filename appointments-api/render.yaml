@@ -8,11 +8,23 @@ services:
     envVars:
       - key: NODE_ENV
         value: production
-      - key: PORT
-        value: 10000
       - key: MONGO_URI
         sync: false
+      - key: MONGODB_URI
+        sync: false
       - key: JWT_SECRET
-        generateValue: true
+        sync: false
+      - key: JWT_EXPIRES_IN
+        value: 7d
+      - key: JWT_REFRESH_SECRET
+        sync: false
       - key: GATEWAY_API_URL
+        value: https://gateway-api-lztd.onrender.com
+      - key: BCRYPT_SALT_ROUNDS
+        value: 12
+      - key: GMAIL_USER
+        sync: false
+      - key: GMAIL_PASS
+        sync: false
+      - key: ADMIN_REGISTER_SECRET
         sync: false
