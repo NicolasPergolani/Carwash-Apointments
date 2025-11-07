@@ -13,15 +13,11 @@ exports.createAppointment = async (requestingUser, data) => {
 };
 
 exports.getMyAppointments = async (requestingUser) => {
-  return await Appointment.find({ user: requestingUser.id })
-    .populate('user')
-    .populate('service');
+  return await Appointment.find({ user: requestingUser.id });
 };
 
 exports.getUserAppointmentsAdmin = async (userId) => {
-  return await Appointment.find({ user: userId })
-    .populate('user')
-    .populate('service');
+  return await Appointment.find({ user: userId });
 };
 
 exports.cancelAppointment = async (requestingUser, appointmentId) => {
@@ -32,9 +28,7 @@ exports.cancelAppointment = async (requestingUser, appointmentId) => {
 
 exports.getAllAppointments = async (requestingUser) => {
   if (requestingUser.role !== 'admin') throw { status: 403, message: 'Forbidden' };
-  return await Appointment.find()
-    .populate('user') 
-    .populate('service'); 
+  return await Appointment.find();
 };
 
 exports.updateAppointment = async (requestingUser, appointmentId, updateData) => {
