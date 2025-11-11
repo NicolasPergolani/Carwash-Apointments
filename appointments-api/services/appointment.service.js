@@ -21,9 +21,15 @@ exports.getUserAppointmentsAdmin = async (userId) => {
 };
 
 exports.cancelAppointment = async (requestingUser, appointmentId) => {
-  const appointment = await Appointment.findOne({ _id: appointmentId, user: requestingUser.id });
+  let query = { _id: appointmentId };
+  if (requestingUser.role !== 'admin') {
+    query.user = requestingUser.id;
+  }
+  const appointment = await Appointment.findOne(query);
   if (!appointment) throw { status: 404, message: 'Appointment not found or not allowed' };
-  await appointment.deleteOne();
+  if (appointment.status === 'cancelled') throw { status: 400, message: 'Appointment already cancelled' };
+  appointment.status = 'cancelled';
+  await appointment.save();
 };
 
 exports.getAllAppointments = async (requestingUser) => {
