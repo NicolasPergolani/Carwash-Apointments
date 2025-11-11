@@ -11,7 +11,7 @@ jobs:
     steps:
       - name: Ping API
         run: |
-          response=$(curl -s -o /dev/null -w "%{http_code}" https://appointments-api.onrender.com)
+          response=$(curl -s -o /dev/null -w "%{http_code}" https://carwash-appointments.onrender.com/)
           if [ "$response" -eq 200 ]; then
             echo "API is awake! Status: $response"
           else
